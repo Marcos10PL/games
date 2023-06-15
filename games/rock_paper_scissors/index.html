@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="author" content="Marek Kramarczyk">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Papier, kamień, nożyce</title>
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/9e75794b11.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="./css/rpf-main.css">
+
+</head>
+
+<body>
+
+	<header>
+		<h2>Witaj w grze - papier, kamień, nożyce!<br><span>(single-player)</span></h2>
+		<section class="info"> 
+			<p>Wybierz do ilu punktów ma trwać rozgrywka:</p> 
+			<input type="range" min="1" max="20" id="rounds" value="3">
+			<span class="slider">3</span>
+		</section>
+		<div>Rozpocznij grę!</div>
+	</header>
+
+	<main>
+		<h3>RUNDA 1</h3>
+		<div class="result">TY 0:0 PC</div>
+		
+		<section class="board">
+			<div class="user">
+				<i class="fa-solid fa-user"></i>
+				<i class="fa-solid fa-hand"></i>
+				<i class="fa-solid fa-hand-fist"></i>
+				<i class="fa-solid fa-hand-scissors fa-rotate-90"></i>
+			</div>
+			<div class="pc">
+				<i class="fa-solid fa-hand"></i>
+				<i class="fa-solid fa-hand-fist"></i>
+				<i class="fa-solid fa-hand-scissors fa-rotate-90"></i>
+				<i class="fa-solid fa-computer"></i>
+			</div>
+		</section>
+
+		<section class="choice">
+			<h3>Wybierz swój atak:</h3>
+			<i class="fa-solid fa-hand"></i>
+			<i class="fa-solid fa-hand-fist"></i>
+			<i class="fa-solid fa-hand-scissors fa-rotate-90"></i>
+		</section>
+	</main>
+
+	<section class="small-width">
+		<p>Niestety ta gra działa tylko na większych ekranach :(</p>
+	</section>
+
+	<footer>
+		<a href="../../index.html">Powrót na stronę główną</a>
+		<p>2023 &copy; Wszelkie prawa zastrzeżone</p>
+	</footer>
+
+	<div class="end"></div>
+
+	<script src="./js/script.js"></script>
+
+</body>
+</html>
+
