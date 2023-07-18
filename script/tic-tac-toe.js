@@ -18,7 +18,7 @@ $(document).ready(function ()
         all++;
         if(round == 'x')
         {
-            $(this).html('<img src="./img/cross.svg" alt="square">');
+            $(this).html('<img src="../img/tic-tac-toe/cross.svg" alt="cross">');
             $(this).css('pointerEvents', 'none');
             $('.info').html('Runda kółka!')
             round = 'o';
