@@ -8,8 +8,8 @@ $(document).ready(function()
 	let letter = '';
 	let chosen = '';
 
-	for(i = 0; i < letters.length; i++)
-	letter += '<div class="letter">'+letters[i]+'</div>';
+	for(let i = 0; i < letters.length; i++)
+	letter += `<div class="letter">${letters[i]}</div>`;
 	
 	$('.letters').html(letter);
 
@@ -26,8 +26,13 @@ $(document).ready(function()
 		else
 		{
 			$('main').show("slow");
-			$(this).html('KATEGORIA: '+chosen).css('opacity', '0.8').css('pointerEvents', 'none').css('margin-top', '60px').css('margin-bottom', '30px');
 			$('header .info, header h2, header > p').hide();
+			$(this).html('KATEGORIA: '+chosen)
+				   .css('opacity', '0.8')
+				   .css('pointerEvents', 'none')
+				   .css('margin-top', '60px')
+				   .css('margin-bottom', '30px');
+
 			if(chosen == 'FILMY') chosen = films;
 			if(chosen == 'SPORT') chosen = sports;
 			if(chosen == 'PRZYSŁOWIA') chosen = proverbs;
@@ -40,25 +45,28 @@ $(document).ready(function()
 	let word = '';
 	let hiddenWord = '';
 
-	function draw(chosen) 
+	const draw = chosen =>
 	{
-		let random = Math.floor(Math.random() * (chosen.length));
+		const random = Math.floor(Math.random() * (chosen.length));
 		word = chosen[random];
-		for (i = 0; i < word.length; i++) {
+
+		for (let i = 0; i < word.length; i++) 
+		{
 			if (word.charAt(i) == " ") hiddenWord += " ";
 			else hiddenWord += "_";
 		}
+
 		$('section.word').html(hiddenWord);
 	}
 
 	$('.letters').on('click', 'div.letter', function() 
 	{ 
-		let letter = $(this).html();
-		let res = word.indexOf(letter);
+		const letter = $(this).html();
+		const res = word.indexOf(letter);
 
 		if(res != -1)
 		{
-			for(i = 0; i < word.length; i++)
+			for(let i = 0; i < word.length; i++)
 			{
 				if (word.charAt(i) == letter) 
 				hiddenWord = hiddenWord.replaceAt(i, letter);
@@ -69,20 +77,21 @@ $(document).ready(function()
 		else
 		{
 			$(this).addClass('bad');
-			$('.hangman img').attr('src', './img/h'+(++img)+'.svg');
-			$('.hangman div').html("LICZBA PRÓB: "+(--trials))
+			$('.hangman img').attr('src', `../../img/hangman/h${++img}.svg`);
+			$('.hangman div').html(`LICZBA PRÓB: ${--trials}`)
 		}
 
 		if(word == hiddenWord) end('Gratulacje, odgadłeś hasło!')
-		else if(trials == 0) end('Niestety przegrałeś.<br> Poprawne hasło to '+word+'.')	
+		else if(trials == 0) end(`Niestety przegrałeś.<br> Poprawne hasło to ${word}.`)	
 	});
 
-	function end(message) 
+	const end = message => 
 	{
 		$('.board').slideUp();
-		$('header > p').fadeTo(100, 1).html(message + '<br>Jeżeli chcesz zagrać jeszcze to raz kliknij <a href="./">tutaj</a>').css('line-height', '50px');
+		$('header > p').fadeTo(100, 1)
+			.html(`${message}<br>Jeżeli chcesz zagrać jeszcze to raz kliknij <a href="./">tutaj</a>.`)
+			.css('line-height', '50px');
 	}
-
 
 	String.prototype.replaceAt = function(index, replacement) 
 	{

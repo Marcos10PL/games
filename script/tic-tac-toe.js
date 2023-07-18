@@ -1,4 +1,4 @@
-$(document).ready(function () 
+$(document).ready(function() 
 {
     const xo = [1,2,3,4,5,6,7,8,9]
     let round = "x";
@@ -8,7 +8,10 @@ $(document).ready(function ()
     $('header div').click(function() 
     { 
         $('main').show("slow");
-        $(this).html('GRA TRWA').css('opacity', '0.8').css('pointerEvents', 'none').css('margin-top', '60px')
+        $(this).html('GRA TRWA')
+               .css('opacity', '0.8')
+               .css('pointerEvents', 'none')
+               .css('margin-top', '60px')
         $('header h2').hide();
     });
 
@@ -18,16 +21,16 @@ $(document).ready(function ()
         all++;
         if(round == 'x')
         {
-            $(this).html('<img src="../img/tic-tac-toe/cross.svg" alt="cross">');
-            $(this).css('pointerEvents', 'none');
+            $(this).html('<img src="../../img/tic-tac-toe/cross.svg" alt="cross">')
+                   .css('pointerEvents', 'none');
             $('.info').html('Runda kółka!')
             round = 'o';
             xo[$(this).data('number')] = 'x';
         }
         else
         {
-            $(this).html('<img src="./img/circle.svg" alt="circle">');
-            $(this).css('pointerEvents', 'none');
+            $(this).html('<img src="../../img/tic-tac-toe/circle.svg" alt="circle">')
+                   .css('pointerEvents', 'none');
             $('.info').html('Runda krzyżyka!')
             round = 'x'
             xo[$(this).data('number')] = 'o';
@@ -48,11 +51,11 @@ $(document).ready(function ()
     });
 
     // end message
-    function end(message) 
+    const end = message =>
     {
         $('header div').html('Koniec gry!');
         $('.board').fadeTo('200', '0.3').css('pointerEvents', 'none');
-        $('.info').html(message + '<br>Jeśli chcesz zagrać jeszcze raz kliknij <a href="./">tutaj');
+        $('.info').html(`${message}<br>Jeśli chcesz zagrać jeszcze raz kliknij <a href="./">tutaj`);
     }
 });
 
