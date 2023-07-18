@@ -1,0 +1,69 @@
+main
+{
+	display: none;
+}
+
+.board
+{
+	width: 540px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.field
+{
+	width: 125px;
+	height: 125px;
+	box-sizing: border-box;
+	border: 2px solid var(--secondary);
+	margin: 5px;
+	border-radius: 15px;
+	transition: all .1s ease-in-out;
+	background-image: url('../img/quest.svg');
+	overflow: hidden;
+}
+
+.field:hover
+{
+	cursor: pointer;
+	border-color: rgb(253, 184, 55);
+	-webkit-box-shadow: 0px 0px 10px 3px rgba(65, 91, 65, 1);
+	-moz-box-shadow: 0px 0px 10px 3px rgba(65, 91, 65, 1);
+	box-shadow: 0px 0px 10px 3px rgba(65, 91, 65, 1); 
+}
+
+.fa-solid
+{
+	font-size: 60px;
+	line-height: 125px;
+	opacity: 0;
+	background-color: rgb(59, 58, 58);
+	width: 125px;
+	height: 125px;
+}
+
+.fa-house{color: burlywood}
+.fa-bell{color: yellow;}
+.fa-book{color: rgb(224, 93, 53);}
+.fa-computer{color: rgb(250, 110, 110);}
+.fa-cart-shopping{color: aquamarine;}
+
+.small-width 
+{
+	display: none;
+}
+
+@media only screen and (max-width: 550px) 
+{
+	main, header 
+	{
+		display: none !important;
+	}
+	.small-width
+	{
+		padding: 30px 30px 0 30px;
+		display: block;
+	}
+}
