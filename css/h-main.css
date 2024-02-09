@@ -27,8 +27,8 @@ main
 	width: 850px;
 	margin: auto;
 	display: flex;
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 	box-sizing: border-box;
 }
 	
