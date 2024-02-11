@@ -4,4 +4,5 @@ A few simple games (hanged man, tic-tac-toe, memory, rock-paper-scissors) made w
 
 ## tech
 
--- JavaScript + jQuery
+-- JavaScript + jQuery <br>
+-- HTML, CSS
