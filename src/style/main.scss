@@ -1,0 +1,48 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+
+*
+{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  font-family: 'Inconsolata', monospace;
+}
+
+body
+{
+  background: url("../img/bg.png"); 
+  /* Background image from https://www.toptal.com/designers/subtlepatterns/ */
+ 
+  color: $textColor;
+  font-size: 1.3rem;
+}
+
+header
+{
+  text-align: center;  
+}
+
+footer
+{
+  color: $footerTextcolor; 
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+a:not(nav a)
+{
+  color: $primary;
+  text-decoration: none;
+  transition: color .2s ease-in-out;
+
+  &:hover
+  {
+    color: #fff;
+  }
+}

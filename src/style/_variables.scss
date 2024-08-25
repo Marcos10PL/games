@@ -1,0 +1,27 @@
+$primary: #d6e789;
+$secondary: #ed8a2d;
+
+$textColor: #e0e0e0;
+$footerTextcolor: #918f8f; 
+
+%button
+{
+  display: block;
+  font-size: inherit;
+  color: $primary;
+  border: .15rem solid $primary;
+  border-radius: 15px/28px;
+  background-color: rgba($primary, .06);
+  min-width: 15rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all .2s ease-in-out;
+
+  &:hover
+  {
+    background-color: rgba($primary, .15);
+    box-shadow: 0 0 6px 0 $primary;
+    cursor: pointer;
+  }
+}
