@@ -1,0 +1,36 @@
+@import 'variables';
+
+.start-button
+{
+  @extend %button;
+  margin: 2.5rem auto 0 auto;
+}
+
+.disabled
+{
+  pointer-events: none;
+  opacity: .75;
+}
+
+.play-again
+{
+  text-align: center;
+  margin-top: 1rem;
+
+  .play-again-button
+  {
+    background: none;
+    border: none;
+    color: $primary;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    transition: color .1s ease-in-out;
+
+    &:hover
+    {
+      color: #fff;
+    }
+  }
+}
+

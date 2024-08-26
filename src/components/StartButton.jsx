@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import styles from '../style/start.module.scss'
+import '../style/buttons.scss';
 
 export default function StartButton({ 
   gameStarted, setGameStarted, gameOver, error})
 {
   return(
     <button 
-      className={`${styles.startButton} ${(gameStarted || error) && styles.disabled}`}
+      className={`start-button ${(gameStarted || error) && 'disabled'}`}
       onClick={() => setGameStarted(true)}
       disabled={error}
     >

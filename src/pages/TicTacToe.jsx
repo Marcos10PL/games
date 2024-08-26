@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import StartButton from "../components/StartButton";
-import Field from "../components/Field";
+import Field from "../components/tic-tac-toe/Field";
 import {PLAYERS, fieldValues, winnerLines} from '../data/tictactoe';
 import style from '../style/tictactoe.module.scss';
+import PlayAgain from "../components/PlayAgain";
 
 export default function TicTacToe()
 {
@@ -13,11 +14,9 @@ export default function TicTacToe()
   const [status, setStatus] = useState(PLAYERS.X);
   const [rounds, setRounds] = useState(0);
   const [winnerFields, setWinnerFields] = useState([]);
-  const [fieldsClicked, setFieldsClicked] = useState([]);
+  const [fieldsClicked, setFieldsClicked] = useState(Array(9).fill(null));
   const [vsPC, setVsPc] = useState('');
   const [error, setError] = useState(true);
-
-  const [pcRands, setPcRands] = useState([]);
 
   useEffect(() => 
   {
@@ -41,34 +40,66 @@ export default function TicTacToe()
         return;
       }
 
-      let XorO = status === PLAYERS.X ? PLAYERS.O : PLAYERS.X;
-      setStatus(XorO);
+      let nextStatus = status === PLAYERS.X ? PLAYERS.O : PLAYERS.X;
+      setStatus(nextStatus);
+
+      if(nextStatus === PLAYERS.O && vsPC)
+        handlePcMove();
     }
   }, [rounds])
 
-  const handleSetRounds = v =>
+  const nextMove = (v, s = status) =>
   {
     setRounds(prev => prev + 1);
     const updatedFieldsClicked = [...fieldsClicked];
-    updatedFieldsClicked[v] = status;
+    updatedFieldsClicked[v] = s;
     setFieldsClicked(updatedFieldsClicked);
+  }
 
-    if(vsPC && rounds % 2 === 0)
+  const findPcMove = player => 
+  {
+    for (let i = 0; i < winnerLines.length; i++) 
     {
-      let isInArray = false, rand;
+      const [a, b, c] = winnerLines[i];
+  
+      if (fieldsClicked[a] === player && fieldsClicked[b] === player && fieldsClicked[c] === null) 
+        return c;
+      if (fieldsClicked[a] === player && fieldsClicked[c] === player && fieldsClicked[b] === null) 
+        return b;
+      if (fieldsClicked[b] === player && fieldsClicked[c] === player && fieldsClicked[a] === null) 
+        return a;
+    }
+    return null;
+  };
+
+  const handlePcMove = () =>
+  {
+    let isInArray = false;
+    let pcMove = findPcMove(PLAYERS.O);
+
+    if(pcMove === null)
+      pcMove = findPcMove(PLAYERS.X)
+
+    if(pcMove === null)
+    {
       do
       {
         isInArray = false;
-        rand = Math.floor(Math.random()*8);
-        if(fieldsClicked.includes(rand))
+        pcMove = Math.floor(Math.random()*9);
+        if(fieldsClicked[pcMove] !== null)
           isInArray = true;
       }
-      while(isInArray)
-      setPcRands([...pcRands, rand])
-      console.log(pcRands);
+      while(isInArray);
+    }
+    
+    if(pcMove !== null)
+    {
+      setTimeout(() => {
+        nextMove(pcMove, PLAYERS.O);
+      }, 500)
     }
   }
- 
+
   const changeTypeOfGame = vsPC =>
   {
     setVsPc(vsPC);
@@ -87,6 +118,10 @@ export default function TicTacToe()
           gameOver={gameOver}
           error={error}
         />
+
+        {gameOver && (
+          <PlayAgain />
+        )}
 
         {!gameStarted && (
           <section className={style.info}>
@@ -114,19 +149,25 @@ export default function TicTacToe()
         {gameStarted && !error && (
           <>
             <section className={style.status}>
-              {!winnerFields.length && rounds === 9 ? 'Remis' : 
-              !gameOver ? `Gra ${status}!` : `Wygrywa ${status}!`}
+              {!winnerFields.length && rounds === 9 ? 'Remis' 
+              : gameOver ? vsPC ? status === PLAYERS.X ? 'Wygrywasz!' : 'Wygrywa komputer!' 
+              :`Wygrywa ${status}!` 
+              : vsPC ? status === PLAYERS.X ? 'Twój ruch!' : 'Ruch komputera!' 
+              : `Gra ${status}!`}
             </section>
 
-            <section className={style.board}>
+            <section 
+              className={style.board}
+              style={status === PLAYERS.O && vsPC ? {pointerEvents: 'none'} : {} }
+            >
               {fieldValues.map((v) => 
                 <Field 
                   key={v}
                   value={v}
                   gameOver={gameOver} 
-                  status={status}
-                  handleSetRounds={handleSetRounds}
+                  nextMove={nextMove}
                   winnerFields={winnerFields}
+                  fieldStatus={fieldsClicked[v]}
                 />
               )}
             </section>

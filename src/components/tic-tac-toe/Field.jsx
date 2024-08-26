@@ -1,13 +1,12 @@
-import x from '../img/tictactoe/cross.svg';
-import o from '../img/tictactoe/circle.svg';
-import { PLAYERS } from '../data/tictactoe';
-import style from '../style/tictactoe.module.scss';
-import { useState } from 'react';
+import x from '../../img/tictactoe/cross.svg';
+import o from '../../img/tictactoe/circle.svg';
+import { PLAYERS } from '../../data/tictactoe';
+import style from '../../style/tictactoe.module.scss';
+import { useEffect, useState } from 'react';
 
 export default function Field({ 
-  gameOver, status, handleSetRounds, value, winnerFields
+  gameOver, nextMove, value, winnerFields, fieldStatus
 }){
-  const [fieldStatus, setFieldStatus] = useState();
   const [clicked, setClicked] = useState(false);
 
   const isWinner = winnerFields.includes(value);
@@ -16,11 +15,14 @@ export default function Field({
   {
     if (!fieldStatus) 
     {
-      setFieldStatus(status);
-      handleSetRounds(value);  
+      nextMove(value);  
       setClicked(true);      
     }
   };
+
+  useEffect(() => {
+    fieldStatus && setClicked(true);
+  }, [fieldStatus]);
 
   return(
     <div 
