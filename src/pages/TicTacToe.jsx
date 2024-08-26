@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import StartButton from "../components/StartButton";
 import Field from "../components/tic-tac-toe/Field";
+import StartButton from "../components/StartButton";
 import {PLAYERS, fieldValues, winnerLines} from '../data/tictactoe';
 import style from '../style/tictactoe.module.scss';
 import PlayAgain from "../components/PlayAgain";
+import Error from "../components/Error";
+
 
 export default function TicTacToe()
 {
@@ -124,16 +126,16 @@ export default function TicTacToe()
         )}
 
         {!gameStarted && (
-          <section className={style.info}>
+          <section className='info'>
             <button 
               onClick={() => changeTypeOfGame(false)}
-              className={(vsPC !== '') && !vsPC ? style.chosen : ''}
+              className={(vsPC !== '') && !vsPC ? 'chosen' : ''}
             >
               1 vs 1
             </button>
             <button 
               onClick={() => changeTypeOfGame(true)}
-              className={(vsPC !== '') && vsPC ? style.chosen : ''}
+              className={(vsPC !== '') && vsPC ? 'chosen' : ''}
             >
               1 vs PC
             </button>
@@ -141,9 +143,7 @@ export default function TicTacToe()
         )}
 
         {(vsPC === '' && error) && (
-          <div className={style.error}>
-            Zanim zaczniesz <br /> wybierz rodzaj gry
-          </div>
+          <Error msg='typ gry' />
         )}
 
         {gameStarted && !error && (

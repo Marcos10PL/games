@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -7,6 +6,11 @@ import Hangman from './pages/Hangman';
 import Memory from './pages/Memory';
 import RockPaperScissors from './pages/rockPaperScissors';
 import NotFound from './pages/NotFound';
+
+import './style/main.scss';
+import './style/nav.scss';
+import './style/buttons.scss';
+import './style/games.scss';
 
 function App() {
 

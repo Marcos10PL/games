@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import '../style/buttons.scss';
 
 export default function PlayAgain()
 {

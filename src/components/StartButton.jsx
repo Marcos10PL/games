@@ -1,7 +1,5 @@
-import '../style/buttons.scss';
-
 export default function StartButton({ 
-  gameStarted, setGameStarted, gameOver, error})
+  gameStarted, setGameStarted, gameOver, error = false})
 {
   return(
     <button 
