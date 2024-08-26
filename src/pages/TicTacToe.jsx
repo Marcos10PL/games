@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Field from "../components/tic-tac-toe/Field";
-import StartButton from "../components/StartButton";
-import {PLAYERS, fieldValues, winnerLines} from '../data/tictactoe';
+import {PLAYERS, fieldValues, winnerLines, GAMEMODES} from '../data/tictactoe';
 import style from '../style/tictactoe.module.scss';
 import PlayAgain from "../components/PlayAgain";
-import Error from "../components/Error";
-
+import Options from "../components/Options";
+import StartButton from "../components/startButton";
+import Info from "../components/Info";
+import Status from "../components/Status";
 
 export default function TicTacToe()
 {
@@ -17,7 +18,8 @@ export default function TicTacToe()
   const [rounds, setRounds] = useState(0);
   const [winnerFields, setWinnerFields] = useState([]);
   const [fieldsClicked, setFieldsClicked] = useState(Array(9).fill(null));
-  const [vsPC, setVsPc] = useState('');
+  const [gameMode, setGameMode] = useState('');
+  const [vsPC, setVsPc] = useState(false);
   const [error, setError] = useState(true);
 
   useEffect(() => 
@@ -45,7 +47,7 @@ export default function TicTacToe()
       let nextStatus = status === PLAYERS.X ? PLAYERS.O : PLAYERS.X;
       setStatus(nextStatus);
 
-      if(nextStatus === PLAYERS.O && vsPC)
+      if(nextStatus === PLAYERS.O && gameMode === GAMEMODES.MULTIPLAYER)
         handlePcMove();
     }
   }, [rounds])
@@ -102,10 +104,11 @@ export default function TicTacToe()
     }
   }
 
-  const changeTypeOfGame = vsPC =>
-  {
-    setVsPc(vsPC);
-    setError(false)
+  const changeTypeOfGame = id =>
+  { 
+    id === GAMEMODES.MULTIPLAYER && setVsPc(true);
+    setGameMode(id);
+    setError(false);
   }
 
   return(
@@ -121,44 +124,36 @@ export default function TicTacToe()
           error={error}
         />
 
-        {gameOver && (
-          <PlayAgain />
-        )}
+        {gameOver && <PlayAgain />}
 
         {!gameStarted && (
-          <section className='info'>
-            <button 
-              onClick={() => changeTypeOfGame(false)}
-              className={(vsPC !== '') && !vsPC ? 'chosen' : ''}
-            >
-              1 vs 1
-            </button>
-            <button 
-              onClick={() => changeTypeOfGame(true)}
-              className={(vsPC !== '') && vsPC ? 'chosen' : ''}
-            >
-              1 vs PC
-            </button>
-          </section>
+          <Options
+            arr={[
+              {id: GAMEMODES.SINGLEPLAYER, cond: GAMEMODES.SINGLEPLAYER === gameMode}, 
+              {id: GAMEMODES.MULTIPLAYER, cond: GAMEMODES.MULTIPLAYER === gameMode}, 
+            ]}
+            onclickFunction={changeTypeOfGame}
+          />
         )}
 
-        {(vsPC === '' && error) && (
-          <Error msg='typ gry' />
-        )}
+        {error && <Info msg='typ gry' />}
 
         {gameStarted && !error && (
           <>
-            <section className={style.status}>
-              {!winnerFields.length && rounds === 9 ? 'Remis' 
-              : gameOver ? vsPC ? status === PLAYERS.X ? 'Wygrywasz!' : 'Wygrywa komputer!' 
-              :`Wygrywa ${status}!` 
-              : vsPC ? status === PLAYERS.X ? 'Twój ruch!' : 'Ruch komputera!' 
-              : `Gra ${status}!`}
-            </section>
+            <Status
+              msg=
+              {
+                !winnerFields.length && rounds === 9 ? 'Remis' 
+                : gameOver ? vsPC ? status === PLAYERS.X ? 'Wygrywasz!' : 'Wygrywa komputer!' 
+                :`Wygrywa ${status}!` 
+                : vsPC ? status === PLAYERS.X ? 'Twój ruch!' : 'Ruch komputera!' 
+                : `Gra ${status}!`
+              }
+            />
 
             <section 
               className={style.board}
-              style={status === PLAYERS.O && vsPC ? {pointerEvents: 'none'} : {} }
+              style={status === PLAYERS.O && vsPC ? {pointerEvents: 'none'} : {}}
             >
               {fieldValues.map((v) => 
                 <Field 
@@ -173,6 +168,7 @@ export default function TicTacToe()
             </section>
           </>
         )}
+        
       </main>
 
       <Footer />

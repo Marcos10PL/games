@@ -8,7 +8,6 @@ export default function Field({
   gameOver, nextMove, value, winnerFields, fieldStatus
 }){
   const [clicked, setClicked] = useState(false);
-
   const isWinner = winnerFields.includes(value);
 
   const handleClick = () => 
@@ -26,7 +25,7 @@ export default function Field({
 
   return(
     <div 
-      className={`${style.field} ${gameOver ? style.disabled : ''}`} 
+      className={`${style.field} ${gameOver ? 'disabled' : ''}`} 
       style={{
         pointerEvents: `${clicked ? 'none': ''}`, 
         backgroundColor: `${isWinner ? 'rgba(237, 138, 45, 0.15)' : ''}`,

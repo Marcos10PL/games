@@ -1,7 +1,7 @@
 export default function({ msg })
 {
   return(
-    <div className='error'>
+    <div className='info'>
       Zanim zaczniesz <br /> wybierz {msg}
     </div>
   )

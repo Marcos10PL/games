@@ -1,0 +1,50 @@
+@import 'variables';
+
+.board
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
+  .hangman
+  {
+    img
+    {
+      width: 20rem;
+    };
+  }
+
+  .container
+  {
+    .pass
+    {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+
+    .letters
+    {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+      
+      .row
+      {
+        display: flex;
+        justify-content: center;
+  
+        button
+        {
+          @extend %button;
+          min-width: 3rem;
+          padding: .5rem;
+          margin: .15rem;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
