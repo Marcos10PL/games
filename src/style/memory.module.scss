@@ -1,0 +1,31 @@
+@import 'variables';
+
+.board
+{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 32rem;
+  margin: 1rem auto 0 auto;
+
+  .card
+  {
+    @extend %button;
+    min-width: 5rem;
+    height: 5rem;
+    padding: .5rem;
+    margin: .15rem;
+    border-radius: 0;
+    font-size: 2rem !important;
+    position: relative;
+
+    img
+    {
+      position: absolute;
+      height: 3.5rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

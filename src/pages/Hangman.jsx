@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import StartButton from "../components/startButton";
@@ -32,29 +33,32 @@ export default function Hangman()
 
   useEffect(() =>
   {
-    const selectCategory = () => 
+    if(gameStarted)
     {
-      switch(category)
+      const selectCategory = () => 
       {
-        case CATEGORIES.PROVERBS: return proverbs;
-        case CATEGORIES.SPORTS: return sports;
-        case CATEGORIES.MOVIES: return movies;
-        default: return [];
+        switch(category)
+        {
+          case CATEGORIES.PROVERBS: return proverbs;
+          case CATEGORIES.SPORTS: return sports;
+          case CATEGORIES.MOVIES: return movies;
+          default: return [];
+        }
       }
-    }
-    const selectedPhrase = selectCategory();
-
-    if (selectedPhrase.length > 0)
-    {
-      let rand = Math.floor(Math.random() * selectedPhrase.length);
+      const selectedPhrase = selectCategory();
   
-      setHiddenPhrase(
-        selectedPhrase[rand]
-          .split('')
-          .map((l) => (l.match(/^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/) ? '_' : ' '))
-      );
-      setPhrase(selectedPhrase[rand].toUpperCase().split(''))
-    } 
+      if (selectedPhrase.length > 0)
+      {
+        let rand = Math.floor(Math.random() * selectedPhrase.length);
+    
+        setHiddenPhrase(
+          selectedPhrase[rand]
+            .split('')
+            .map((l) => (l.match(/^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/) ? '_' : ' '))
+        );
+        setPhrase(selectedPhrase[rand].toUpperCase().split(''))
+      } 
+    }
   }, [gameStarted])
 
   useEffect(() =>
