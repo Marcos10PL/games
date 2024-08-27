@@ -9,19 +9,32 @@
   
   .hangman
   {
+    margin: 1rem;
+    width: 18rem;
+    height: 18rem;
+
     img
     {
-      width: 20rem;
-    };
+      width: 18rem;
+
+      &.bg
+      {
+        position: absolute;
+        opacity: 0.2;
+      }
+    }
   }
 
   .container
   {
-    .pass
+    max-width: 38rem;
+
+    .phrase
     {
       text-align: center;
       text-transform: uppercase;
       font-size: 1.5rem;
+      letter-spacing: .2rem;
     }
 
     .letters
@@ -43,6 +56,16 @@
           padding: .5rem;
           margin: .15rem;
           border-radius: 0;
+
+          &.good
+          {
+            background-color: rgba($primary, .3);
+          }
+          
+          &.bad
+          {
+            background-color: rgba($secondary, .3);
+          }
         }
       }
     }

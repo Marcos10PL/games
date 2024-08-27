@@ -1,0 +1,44 @@
+.start-button {
+  display: block;
+  font-size: inherit;
+  color: #d6e789;
+  border: 0.15rem solid #d6e789;
+  border-radius: 15px/28px;
+  background-color: rgba(214, 231, 137, 0.06);
+  min-width: 15rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+.start-button:hover {
+  background-color: rgba(214, 231, 137, 0.15);
+  box-shadow: 0 0 6px 0 #d6e789;
+  cursor: pointer;
+}
+
+.start-button {
+  margin: 1rem auto 0 auto;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.play-again {
+  text-align: center;
+  margin-top: 1rem;
+}
+.play-again .play-again-button {
+  background: none;
+  border: none;
+  color: #d6e789;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  transition: color 0.1s ease-in-out;
+}
+.play-again .play-again-button:hover {
+  color: #fff;
+}/*# sourceMappingURL=buttons.css.map */

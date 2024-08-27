@@ -5,10 +5,13 @@ import StartButton from "../components/startButton";
 import Info from "../components/Info";
 import Options from "../components/Options";
 import Status from "../components/Status";
-import h1 from '../img/hangman/h11.svg';
-import style from '../style/hangman.module.scss';
+import Letter from "../components/hangman/Letter";
+import HangmanDrawing from "../components/hangman/HangmanDrawing";
+import PlayAgain from "../components/PlayAgain";
+import Phrase from "../components/hangman/Phrase";
 
-import { CATEGORIES, LETTERS, proverbs, sports, movies } from "../data/hangman";
+import style from '../style/hangman.module.scss';
+import { CATEGORIES, LETTERS, proverbs, sports, movies, MAX_LIVES } from "../data/hangman";
 
 export default function Hangman()
 {
@@ -16,8 +19,10 @@ export default function Hangman()
   const [gameOver, setGameOver] = useState(false);
   const [error, setError] = useState(true);
   const [category, setCategory] = useState('');
-  const [categoryArray, setCategoryArray] = useState([]);
-  const [pass, setPass] = useState([]);
+  const [phrase, setPhrase] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [lives, setLives] = useState(0);
+  const [hiddenPhrase, setHiddenPhrase] = useState([]);
 
   const changeCategory = id => 
   {
@@ -37,20 +42,50 @@ export default function Hangman()
         default: return [];
       }
     }
+    const selectedPhrase = selectCategory();
 
-    const categoryArr = selectCategory();
-
-    if (categoryArr.length > 0)
+    if (selectedPhrase.length > 0)
     {
-      let rand = Math.floor(Math.random() * categoryArr.length);
+      let rand = Math.floor(Math.random() * selectedPhrase.length);
   
-      setPass(
-        categoryArr[rand]
+      setHiddenPhrase(
+        selectedPhrase[rand]
           .split('')
           .map((l) => (l.match(/^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/) ? '_' : ' '))
       );
+      setPhrase(selectedPhrase[rand].toUpperCase().split(''))
     } 
   }, [gameStarted])
+
+  useEffect(() =>
+  {
+    if(lives === MAX_LIVES)
+      setGameOver(true);
+
+    if(lives > 0)
+    {
+      if(phrase.toString() === hiddenPhrase.toString())
+        setGameOver(true);
+    }
+  }, [lives, guessedLetters])
+
+  const handleClick = letter =>
+  {
+    if(phrase.includes(letter))
+    {
+      const updatedHiddenPhrase = [...hiddenPhrase];
+      phrase.forEach((lett, index) => 
+      {
+        if(lett === letter)
+          updatedHiddenPhrase[index] = letter;
+      })
+        
+      setHiddenPhrase(updatedHiddenPhrase);
+      setGuessedLetters([...guessedLetters, letter]);
+    }
+    else
+      setLives(prev => prev + 1);
+  }
 
   return(
     <>
@@ -64,6 +99,8 @@ export default function Hangman()
           gameOver={gameOver}
           error={error}
         />
+
+        {gameOver && <PlayAgain />}
 
         {!gameStarted && (
           <Options
@@ -79,34 +116,32 @@ export default function Hangman()
         {gameStarted && !error && (
           <>
             <Status
-              msg={`Wybrana kategoria: ${category}`}
+              msg={
+              !gameOver ? `Kategoria: ${category}` 
+              : lives === MAX_LIVES ? 'Przegrałeś!' : 'Wygrałeś!'}
             />
 
+            <section className={`${style.board} ${gameOver ? 'disabled' : ''}`}>
 
-            <section className={style.board}>
-
-              <div className={style.hangman}>
-                <img src={h1} alt="" /> 
-              </div>
+              <HangmanDrawing lives={lives} />
 
               <div className={style.container}>
-
-                <div className={style.pass}>
-                  {pass}
-                </div>
+                <Phrase phrase={gameOver ? phrase : hiddenPhrase} />
 
                 <div className={style.letters}>
-                  {LETTERS.map((row, index) =>  
-                    <div key={index} className={style.row}>
-                      {row.map(letter =>
-                        <button key={letter}>
-                          {letter}
-                        </button>
+                  {LETTERS.map((row, index) =>
+                    <div className={style.row} key={index}>
+                      {row.map(letter => 
+                        <Letter 
+                          key={letter}
+                          handleClick={handleClick}
+                          guessedLetters={guessedLetters}
+                          letter={letter}
+                        />
                       )}
                     </div>
                   )}
                 </div>
-                
               </div>
 
             </section>
