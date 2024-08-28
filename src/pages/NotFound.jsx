@@ -12,11 +12,9 @@ export default function NotFound()
   })
 
   return(
-    <>
-      <div style={{textAlign: 'center', padding: '15px'}}>
-        <p>Nie znaleziono strony o podanym adresie.</p>
-        <p>Za chwilę zostaniesz przekierowany na stronę główną.</p>
-      </div>
-    </>
+    <div style={{textAlign: 'center', padding: '15px'}}>
+      <p>Nie znaleziono strony o podanym adresie.</p>
+      <p>Za chwilę zostaniesz przekierowany na stronę główną.</p>
+    </div>
   )
 }

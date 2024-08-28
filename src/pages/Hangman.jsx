@@ -117,7 +117,7 @@ export default function Hangman()
           />
         )}
 
-        {gameStarted && !error && (
+        {(gameStarted && !error) && (
           <>
             <Status
               msg={

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Field from "../components/tic-tac-toe/Field";
-import {PLAYERS, fieldValues, winnerLines, GAMEMODES} from '../data/tictactoe';
-import style from '../style/tictactoe.module.scss';
 import PlayAgain from "../components/PlayAgain";
 import Options from "../components/Options";
 import StartButton from "../components/startButton";
 import Info from "../components/Info";
 import Status from "../components/Status";
+
+import {PLAYERS, fieldValues, winnerLines, GAMEMODES} from '../data/tictactoe';
+import style from '../style/tictactoe.module.scss';
 
 export default function TicTacToe()
 {

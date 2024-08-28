@@ -3,21 +3,15 @@
 .start-button
 {
   @extend %button;
-  margin: 1rem auto 0 auto;
+  margin: 0 auto;
 }
 
-.disabled
-{
-  pointer-events: none;
-  opacity: .75;
-}
-
-.play-again
+div:has(.play-again)
 {
   text-align: center;
   margin-top: 1rem;
-
-  .play-again-button
+  
+  .play-again
   {
     background: none;
     border: none;
@@ -26,7 +20,7 @@
     font-size: inherit;
     padding: 0;
     transition: color .1s ease-in-out;
-
+    
     &:hover
     {
       color: #fff;
@@ -34,3 +28,8 @@
   }
 }
 
+.disabled
+{
+  pointer-events: none;
+  opacity: .75;
+}

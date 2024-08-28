@@ -5,8 +5,8 @@ export default function PlayAgain()
   const navigate = useNavigate();
 
   return(
-    <div className="play-again">
-      <button onClick={() => navigate(0)} className="play-again-button">
+    <div>
+      <button onClick={() => navigate(0)} className="play-again">
         Chcesz zagrać ponownie?
       </button>
     </div>

@@ -7,9 +7,10 @@ import Options from "../components/Options";
 import Info from "../components/Info";
 import Status from "../components/Status";
 import Card from "../components/memory/Card";
+import PlayAgain from "../components/PlayAgain";
 
-import { NUMBER_OF_CARDS, CARDS } from "../data/memory";
 import style from '../style/memory.module.scss';
+import { NUMBER_OF_CARDS, CARDS } from "../data/memory";
 
 export default function Memory()
 {
@@ -20,6 +21,7 @@ export default function Memory()
   const [counter, setCounter] = useState(0);
   const [cards, setCards] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(0);
 
   const changeNumber = id => 
   {
@@ -52,10 +54,8 @@ export default function Memory()
 
       const shuffledCards = shuffleArray(updatedCards);
       setCards(shuffledCards);
-      
     }
   }, [gameStarted])
-
 
   useEffect(() => 
   {
@@ -67,13 +67,15 @@ export default function Memory()
 
       if (firstIcon.id === secondIcon.id) 
       {
-        let newCards = cards.map(card => {
+        let newCards = cards.map(card => 
+        {
           if(card.id === firstIcon.id  || card.id === secondIcon.id)
             return {...card, matched: true}
           return card;
         })
+
         setCards(newCards);
-        console.log(newCards);
+        setVisibleCards(prev => prev + 2);
       }
 
       setTimeout(() => {
@@ -82,10 +84,17 @@ export default function Memory()
     }
   }, [selectedCards]);
 
+  useEffect(() => {
+    if(gameStarted && visibleCards === cards.length)
+      setGameOver(true);
+  }, [visibleCards])
+
   const handleCardClick = index => 
   {
     if (selectedCards.length === 2) 
       return;
+    
+    setCounter(prev => prev + 1);
 
     const newSelectedCards = [...selectedCards, index];
     setSelectedCards(newSelectedCards);
@@ -96,6 +105,7 @@ export default function Memory()
       <Header msg="Memory" />
 
       <main>
+
         <StartButton 
           gameStarted={gameStarted}
           setGameStarted={setGameStarted}
@@ -116,25 +126,26 @@ export default function Memory()
           />
         )}
 
-      {gameStarted && !error && (
-        <>
-          <Status msg={`Licznik: ${counter}`} />
+        {(gameStarted && !error) && (
+          <>
+            <Status msg={`Licznik: ${counter}`} />
 
-          <section className={style.board}>
-            {cards.map((card, index) => (
-              <Card 
-                key={`${card.id} ${index}`} 
-                card={card} 
-                handleCardClick={() => handleCardClick(index)}
-                clicked={selectedCards.includes(index)}
-                visible={card.matched}
-              />
-            ))}
-          </section>
-        </>
-      )}
+            <section className={style.board}>
+              {cards.map((card, index) => (
+                <Card 
+                  key={`${card.id} ${index}`} 
+                  card={card} 
+                  handleCardClick={() => handleCardClick(index)}
+                  clicked={selectedCards.includes(index)}
+                  visible={card.matched}
+                />
+              ))}
+            </section>
+          </>
+        )}
         
         {error && <Info msg='liczbę kart' />}
+
       </main>
 
       <Footer />

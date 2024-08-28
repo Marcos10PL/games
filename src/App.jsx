@@ -8,7 +8,6 @@ import RockPaperScissors from './pages/rockPaperScissors';
 import NotFound from './pages/NotFound';
 
 import './style/main.scss';
-import './style/nav.scss';
 import './style/buttons.scss';
 import './style/games.scss';
 

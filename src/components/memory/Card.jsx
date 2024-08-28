@@ -1,14 +1,16 @@
 import style from '../../style/memory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import questionMark from '../../img/memory/quest.svg';
-import { useEffect, useState } from 'react';
 
-export default function Card({ card, handleCardClick, clicked, visible})
+export default function Card({ card, handleCardClick, clicked, visible })
 {
   return(
     <button 
       onClick={handleCardClick}
-      style={{color: card.color}}
+      style={{ 
+        color: card.color,
+        pointerEvents: clicked ? 'none' : '' 
+      }}
       className={`${style.card} ${visible ? 'disabled' : ''}`}
     >
       <img 

@@ -1,0 +1,56 @@
+@import 'variables';
+
+.board
+{
+  display: flex;
+  margin: 1rem auto 0 auto;
+  width: 12rem;
+  gap: .5rem;
+
+  .icon
+  {
+    height: 3rem;
+    width: 50%;
+    text-align: center;
+    border: .15rem solid $secondary;
+    padding: 1rem;
+    font-size: 1.5rem;
+    background-color: rgba($secondary, .06);
+    border-radius: 10px;
+  }
+}
+
+.panel
+{
+  h4
+  {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+
+  .icons
+  {
+    margin: 0 auto;
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+
+    button
+    {
+      @extend %button;
+      min-width: 4rem;
+      height: 4rem;
+      font-size: 2rem;
+      border-radius: 0;
+      padding: 0;
+      margin: 0;
+
+      .icon
+      {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

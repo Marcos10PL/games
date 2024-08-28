@@ -18,19 +18,14 @@
 }
 
 .start-button {
-  margin: 1rem auto 0 auto;
+  margin: 0 auto;
 }
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.75;
-}
-
-.play-again {
+div:has(.play-again) {
   text-align: center;
   margin-top: 1rem;
 }
-.play-again .play-again-button {
+div:has(.play-again) .play-again {
   background: none;
   border: none;
   color: #d6e789;
@@ -39,6 +34,11 @@
   padding: 0;
   transition: color 0.1s ease-in-out;
 }
-.play-again .play-again-button:hover {
+div:has(.play-again) .play-again:hover {
   color: #fff;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.75;
 }/*# sourceMappingURL=buttons.css.map */
