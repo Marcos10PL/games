@@ -60,3 +60,23 @@ a:not(nav a)
     color: #fff;
   }
 }
+
+.too-small-device-info
+{
+  display: none;
+  margin: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 18.75rem)
+{
+  main, header, footer
+  {
+    display: none;
+  }
+
+  .too-small-device-info
+  {
+    display: block;
+  }
+}

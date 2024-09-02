@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -22,6 +22,7 @@ export default function Hangman()
   const [category, setCategory] = useState('');
   const [phrase, setPhrase] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const [clickedLetters, setClickedLetters] = useState([]);
   const [lives, setLives] = useState(0);
   const [hiddenPhrase, setHiddenPhrase] = useState([]);
 
@@ -63,14 +64,8 @@ export default function Hangman()
 
   useEffect(() =>
   {
-    if(lives === MAX_LIVES)
+    if(lives === MAX_LIVES || (lives > 0 && phrase.toString() === hiddenPhrase.toString()))
       setGameOver(true);
-
-    if(lives > 0)
-    {
-      if(phrase.toString() === hiddenPhrase.toString())
-        setGameOver(true);
-    }
   }, [lives, guessedLetters])
 
   const handleClick = letter =>
@@ -89,8 +84,31 @@ export default function Hangman()
     }
     else
       setLives(prev => prev + 1);
-  }
 
+    setClickedLetters([...clickedLetters, letter]);
+  }
+  
+  useEffect(() => 
+  { 
+    const handleKeyDown = e => 
+    {
+      const key = e.key.toUpperCase();
+      if(
+        !gameStarted 
+        || lives === MAX_LIVES 
+        || !(key.match(/^[A-ZĄĆĘŁŃÓŚŻŹ]/)) 
+        || clickedLetters.includes(key)
+      ) 
+        return;
+
+      e.preventDefault();
+      handleClick(key.toUpperCase());
+    }
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => { window.removeEventListener('keydown', handleKeyDown); };
+  }, [handleClick, clickedLetters])
+  
   return(
     <>
       <Header msg="Wisielec" />
@@ -140,6 +158,7 @@ export default function Hangman()
                           key={letter}
                           handleClick={handleClick}
                           guessedLetters={guessedLetters}
+                          clickedLetters={clickedLetters}
                           letter={letter}
                         />
                       )}

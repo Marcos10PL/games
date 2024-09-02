@@ -2,6 +2,7 @@
 
 .board
 {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -11,21 +12,64 @@
   .card
   {
     @extend %button;
+    box-sizing: border-box;
     min-width: 5rem;
     height: 5rem;
     padding: .5rem;
     margin: .15rem;
     border-radius: 0;
-    font-size: 2rem !important;
+    font-size: 2rem;
     position: relative;
 
     img
     {
       position: absolute;
-      height: 3.5rem;
+      height: 100%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
   }
 }
+
+@media (max-width: 33.125rem) 
+{
+  .board
+  {
+    width: 26rem;
+    .card
+    {
+      min-width: 4rem;
+      height: 4rem;
+    }
+  }
+}
+
+@media (max-width: 26.875rem)
+{
+  .board
+  {
+    width: 23rem;
+
+    .card
+    {
+      min-width: 3.5rem;
+      height: 3.5rem;
+      font-size: 1.5rem;
+    }
+  }
+} 
+
+@media (max-width: 23.75rem)
+{
+  .board
+  {
+    width: 17.2rem;
+
+    .card
+    {
+      min-width: 4rem;
+      height: 4rem;
+    }
+  }
+} 

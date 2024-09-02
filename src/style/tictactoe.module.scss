@@ -8,8 +8,7 @@
   align-items: center;
   width: 21rem;
   height: 21rem;
-  margin: auto;
-  margin-top: 1rem;
+  margin: 1rem auto 0 auto;
 
   .field
   {
@@ -34,5 +33,20 @@
       cursor: pointer;
     }
 
+  }
+}
+
+@media (max-width: 22.5rem) 
+{
+  .board
+  {
+    width: 18rem;
+    height: 18rem;
+
+    .field
+    {
+      width: 6rem;
+      height: 6rem;
+    }
   }
 }

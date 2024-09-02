@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import TicTacToe from './pages/TicTacToe';
@@ -6,6 +6,7 @@ import Hangman from './pages/Hangman';
 import Memory from './pages/Memory';
 import RockPaperScissors from './pages/rockPaperScissors';
 import NotFound from './pages/NotFound';
+import TooSmallDeviceInfo from './components/TooSmallDeviceInfo';
 
 import './style/main.scss';
 import './style/buttons.scss';
@@ -15,6 +16,8 @@ function App() {
 
   return (
     <>
+      <TooSmallDeviceInfo />
+
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/kolko-i-krzyzyk' element={<TicTacToe />}/>
