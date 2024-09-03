@@ -5,5 +5,5 @@ The games have different modes.
 
 ## tech
 
--- React.js
+-- React.js <br />
 -- SCSS
