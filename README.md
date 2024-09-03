@@ -1,8 +1,9 @@
-# React + Vite
+# mini-apps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The website with games like Tic-Tac-Toe, Memory, Hangman and Rock, Paper, Scissors. <br />
+The games have different modes.
 
-Currently, two official plugins are available:
+## tech
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-- React.js
+-- SCSS

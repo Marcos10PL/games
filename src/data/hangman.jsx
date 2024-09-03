@@ -12,7 +12,8 @@ import h11 from '../img/hangman/h11.svg';
 
 export const images = [null, h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11]
 
-export const proverbs = [
+export const proverbs = 
+[
   "Nie ma róży bez kolców",
   "Lepszy wróbel w garści niż gołąb na dachu",
   "Co dwie głowy to nie jedna",
@@ -79,7 +80,8 @@ export const proverbs = [
   "Czas leczy rany"
 ];
 
-export const sports = [
+export const sports = 
+[
   "Piłka nożna",
   "Koszykówka",
   "Siatkówka",
@@ -183,7 +185,8 @@ export const sports = [
   "Darts"
 ];
 
-export const movies = [
+export const movies = 
+[
   "Człowiek z marmuru",
   "Człowiek z żelaza",
   "Ida",
@@ -292,7 +295,8 @@ export const movies = [
 
 export const CATEGORIES = {PROVERBS: 'przysłowia', SPORTS: 'sporty', MOVIES: 'filmy'}
 
-export const LETTERS = [
+export const LETTERS = 
+[
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],

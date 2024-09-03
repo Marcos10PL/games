@@ -12,4 +12,6 @@ export const winnerLines =
   [2, 4, 6],
 ];
 
-export const GAMEMODES = {SINGLEPLAYER: '1 vs 1', MULTIPLAYER: '1 vs PC'}
+export const GAME_MODES = {SINGLEPLAYER: '1 vs 1', MULTIPLAYER: '1 vs PC'}
+
+export const MAX_ROUNDS = 9;

@@ -1,5 +1,5 @@
 export default function StartButton({ 
-  gameStarted, setGameStarted, gameOver, error = false})
+  gameStarted, setGameStarted, gameOver, error})
 {
   return(
     <button 

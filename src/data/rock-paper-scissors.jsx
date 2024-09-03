@@ -6,9 +6,9 @@ export const SCISSORS = 'scissors';
 
 export const ICONS = 
 [
-  { id: ROCK, icon: faHandRock, color: "", rotation: 0},
+  { id: ROCK, icon: faHandRock, color: "", rotation: 0 },
   { id: PAPER, icon: faHandPaper, color: "", rotation: 0 },
-  { id: SCISSORS, icon: faHandScissors, color: "", rotation: 90},
+  { id: SCISSORS, icon: faHandScissors, color: "", rotation: 90 },
 ]
 
 export const LIMITS = {'1': 1, '3': 3, '6': 6}; 

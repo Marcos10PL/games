@@ -5,11 +5,11 @@ import Header from "../components/Header";
 import Field from "../components/tic-tac-toe/Field";
 import PlayAgain from "../components/PlayAgain";
 import Options from "../components/Options";
-import StartButton from "../components/startButton";
+import StartButton from "../components/StartButton";
 import Info from "../components/Info";
 import Status from "../components/Status";
 
-import {PLAYERS, fieldValues, winnerLines, GAMEMODES} from '../data/tictactoe';
+import {PLAYERS, fieldValues, winnerLines, GAME_MODES, MAX_ROUNDS} from '../data/tictactoe';
 import style from '../style/tictactoe.module.scss';
 
 export default function TicTacToe()
@@ -40,7 +40,7 @@ export default function TicTacToe()
         }
       }
 
-      if(rounds === 9)
+      if(rounds === MAX_ROUNDS)
       {
         setGameOver(true);
         return;
@@ -49,7 +49,7 @@ export default function TicTacToe()
       let nextStatus = status === PLAYERS.X ? PLAYERS.O : PLAYERS.X;
       setStatus(nextStatus);
 
-      if(nextStatus === PLAYERS.O && gameMode === GAMEMODES.MULTIPLAYER)
+      if(nextStatus === PLAYERS.O && gameMode === GAME_MODES.MULTIPLAYER)
         handlePcMove();
     }
   }, [rounds])
@@ -91,7 +91,7 @@ export default function TicTacToe()
       do
       {
         isInArray = false;
-        pcMove = Math.floor(Math.random()*9);
+        pcMove = Math.floor(Math.random()*MAX_ROUNDS);
         if(fieldsClicked[pcMove] !== null)
           isInArray = true;
       }
@@ -108,7 +108,7 @@ export default function TicTacToe()
 
   const changeTypeOfGame = id =>
   { 
-    id === GAMEMODES.MULTIPLAYER && setVsPc(true);
+    id === GAME_MODES.MULTIPLAYER && setVsPc(true);
     setGameMode(id);
     setError(false);
   }
@@ -131,8 +131,8 @@ export default function TicTacToe()
         {!gameStarted && (
           <Options
             arr={[
-              {id: GAMEMODES.SINGLEPLAYER, cond: GAMEMODES.SINGLEPLAYER === gameMode}, 
-              {id: GAMEMODES.MULTIPLAYER, cond: GAMEMODES.MULTIPLAYER === gameMode}, 
+              {id: GAME_MODES.SINGLEPLAYER, cond: GAME_MODES.SINGLEPLAYER === gameMode}, 
+              {id: GAME_MODES.MULTIPLAYER, cond: GAME_MODES.MULTIPLAYER === gameMode}, 
             ]}
             onclickFunction={changeTypeOfGame}
           />
@@ -145,7 +145,7 @@ export default function TicTacToe()
             <Status
               msg=
               {
-                !winnerFields.length && rounds === 9 ? 'Remis' 
+                !winnerFields.length && rounds === MAX_ROUNDS ? 'Remis' 
                 : gameOver ? vsPC ? status === PLAYERS.X ? 'Wygrywasz!' : 'Wygrywa komputer!' 
                 :`Wygrywa ${status}!` 
                 : vsPC ? status === PLAYERS.X ? 'Twój ruch!' : 'Ruch komputera!' 

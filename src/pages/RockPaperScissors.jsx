@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import StartButton from "../components/startButton";
+import StartButton from "../components/StartButton";
 import PlayAgain from "../components/PlayAgain";
 import Info from "../components/Info";
 import Options from "../components/Options";
