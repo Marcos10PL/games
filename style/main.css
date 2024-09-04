@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap");
+.options button, .start-button, nav a {
+  display: block;
+  font-size: inherit;
+  color: #d6e789;
+  border: 0.15rem solid #d6e789;
+  border-radius: 15px/28px;
+  background-color: rgba(214, 231, 137, 0.06);
+  min-width: 15rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+.options button:hover, .start-button:hover, nav a:hover {
+  background-color: rgba(214, 231, 137, 0.15);
+  box-shadow: 0 0 6px 0 #d6e789;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.options button {
+  min-width: 9rem !important;
+  border-color: #fff;
+  color: #fff;
+  text-transform: uppercase;
+}
+.options button.chosen {
+  border-color: #ed8a2d;
+  pointer-events: none;
+  box-shadow: 0 0 5px 0 #ed8a2d;
+  background-color: rgba(237, 138, 45, 0.1);
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.info {
+  color: #ed8a2d;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.status {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.start-button {
+  margin: 0 auto;
+}
+
+div:has(.play-again) {
+  text-align: center;
+  margin-top: 1rem;
+}
+div:has(.play-again) .play-again {
+  background: none;
+  border: none;
+  color: #d6e789;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  transition: color 0.1s ease-in-out;
+}
+div:has(.play-again) .play-again:hover {
+  color: #fff;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-family: "Inconsolata", monospace;
+}
+
+body {
+  background: url("../img/bg.png");
+  /* Background image from https://www.toptal.com/designers/subtlepatterns/ */
+  color: #e0e0e0;
+  font-size: 1.3rem;
+}
+
+header {
+  text-align: center;
+}
+
+footer {
+  color: #918f8f;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav a {
+  display: block;
+  text-decoration: none;
+}
+
+a:not(nav a) {
+  color: #d6e789;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:not(nav a):hover {
+  color: #fff;
+}
+
+.too-small-device-info {
+  display: none;
+  margin: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 18.75rem) {
+  main, header, footer {
+    display: none;
+  }
+  .too-small-device-info {
+    display: block;
+  }
+}/*# sourceMappingURL=main.css.map */

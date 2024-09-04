@@ -1,0 +1,38 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #fff;
+  align-items: center;
+  width: 21rem;
+  height: 21rem;
+  margin: 1rem auto 0 auto;
+}
+.board .field {
+  box-sizing: border-box;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid #fff;
+  transition: border 0.1s ease-in-out;
+}
+.board .field > img {
+  width: 90%;
+  height: 90%;
+}
+.board .field:hover {
+  border-color: #ed8a2d;
+  cursor: pointer;
+}
+
+@media (max-width: 22.5rem) {
+  .board {
+    width: 18rem;
+    height: 18rem;
+  }
+  .board .field {
+    width: 6rem;
+    height: 6rem;
+  }
+}/*# sourceMappingURL=tictactoe.module.css.map */

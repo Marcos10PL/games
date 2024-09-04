@@ -9,8 +9,6 @@ import NotFound from './pages/NotFound';
 import TooSmallDeviceInfo from './components/TooSmallDeviceInfo';
 
 import './style/main.scss';
-import './style/buttons.scss';
-import './style/games.scss';
 
 function App() {
 

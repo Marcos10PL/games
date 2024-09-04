@@ -1,0 +1,73 @@
+.board .card {
+  display: block;
+  font-size: inherit;
+  color: #d6e789;
+  border: 0.15rem solid #d6e789;
+  border-radius: 15px/28px;
+  background-color: rgba(214, 231, 137, 0.06);
+  min-width: 15rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+.board .card:hover {
+  background-color: rgba(214, 231, 137, 0.15);
+  box-shadow: 0 0 6px 0 #d6e789;
+  cursor: pointer;
+}
+
+.board {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 32rem;
+  margin: 1rem auto 0 auto;
+}
+.board .card {
+  box-sizing: border-box;
+  min-width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+  margin: 0.15rem;
+  border-radius: 0;
+  font-size: 2rem;
+  position: relative;
+}
+.board .card img {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 33.125rem) {
+  .board {
+    width: 26rem;
+  }
+  .board .card {
+    min-width: 4rem;
+    height: 4rem;
+  }
+}
+@media (max-width: 26.875rem) {
+  .board {
+    width: 23rem;
+  }
+  .board .card {
+    min-width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 23.75rem) {
+  .board {
+    width: 17.2rem;
+  }
+  .board .card {
+    min-width: 4rem;
+    height: 4rem;
+  }
+}/*# sourceMappingURL=memory.module.css.map */

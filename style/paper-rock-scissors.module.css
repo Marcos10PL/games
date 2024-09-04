@@ -1,0 +1,59 @@
+.panel .icons button {
+  display: block;
+  font-size: inherit;
+  color: #d6e789;
+  border: 0.15rem solid #d6e789;
+  border-radius: 15px/28px;
+  background-color: rgba(214, 231, 137, 0.06);
+  min-width: 15rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+.panel .icons button:hover {
+  background-color: rgba(214, 231, 137, 0.15);
+  box-shadow: 0 0 6px 0 #d6e789;
+  cursor: pointer;
+}
+
+.board {
+  display: flex;
+  margin: 1rem auto 0 auto;
+  max-width: 12rem;
+  gap: 0.5rem;
+}
+.board .icon {
+  height: 3rem;
+  width: 50%;
+  text-align: center;
+  border: 0.15rem solid #ed8a2d;
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: rgba(237, 138, 45, 0.06);
+  border-radius: 10px;
+}
+
+.panel h4 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.panel .icons {
+  margin: 0 auto;
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.panel .icons button {
+  min-width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+.panel .icons button .icon {
+  font-size: 1.2rem;
+}/*# sourceMappingURL=paper-rock-scissors.module.css.map */
