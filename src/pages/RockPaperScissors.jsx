@@ -63,7 +63,7 @@ export default function RockPaperScissors()
     if(pcPoints === selectedLimit || userPoints === selectedLimit)
       return;
 
-    if(msg !== null)
+    if(msg)
     {
       setTimeout(() => 
       {
@@ -115,7 +115,7 @@ export default function RockPaperScissors()
         {(gameStarted && !error) && (
           <>
             <Status msg={
-              msg !== null ? gameOver ? `${msg} - ${userPoints}:${pcPoints}`
+              msg ? gameOver ? `${msg} - ${userPoints}:${pcPoints}`
               : msg : `TY ${userPoints}:${pcPoints} PC`} 
             />
 
@@ -124,7 +124,7 @@ export default function RockPaperScissors()
               <Icon icon={pcIcon} />    
             </section>
 
-            <section className={`${style.panel} ${(msg !== null || gameOver) && 'disabled'}`}>
+            <section className={`${style.panel} ${(msg || gameOver) && 'disabled'}`}>
               <h4>Wybierz swój atak</h4>
               <div className={style.icons}>
                 {ICONS.map((icon, index) => 
