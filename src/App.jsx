@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import TicTacToe from "./pages/TicTacToe";
 import Hangman from "./pages/Hangman";
 import Memory from "./pages/Memory";
-import RockPaperScissors from "./pages/rockPaperScissors";
+import RockPaperScissors from "./pages/RockPaperScissors";
 import NotFound from "./pages/NotFound";
 import TooSmallDeviceInfo from "./components/TooSmallDeviceInfo";
 
