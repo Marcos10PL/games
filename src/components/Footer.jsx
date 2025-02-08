@@ -1,14 +1,17 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from "react-router-dom";
 
-export default function Footer()
-{
-  const location = useLocation()
+export default function Footer() {
+  const location = useLocation();
   const path = location.pathname;
 
-  return(
+  return (
     <footer>
-      {path !== '/' && <p><NavLink to='/'>Powrót na stronę główną</NavLink></p>}
+      {path !== "/" && (
+        <p>
+          <NavLink to="/">Powrót na stronę główną</NavLink>
+        </p>
+      )}
       <p>2024 &copy; Wszelkie prawa zastrzeżone</p>
     </footer>
-  )
+  );
 }

@@ -83,22 +83,22 @@ export default function TicTacToe()
     let isInArray = false;
     let pcMove = findPcMove(PLAYERS.O);
 
-    if(pcMove === null)
+    if(!pcMove)
       pcMove = findPcMove(PLAYERS.X)
 
-    if(pcMove === null)
+    if(!pcMove)
     {
       do
       {
         isInArray = false;
         pcMove = Math.floor(Math.random()*MAX_ROUNDS);
-        if(fieldsClicked[pcMove] !== null)
+        if(fieldsClicked[pcMove])
           isInArray = true;
       }
       while(isInArray);
     }
     
-    if(pcMove !== null)
+    if(pcMove)
     {
       setTimeout(() => {
         nextMove(pcMove, PLAYERS.O);
