@@ -1,6 +1,6 @@
 import style from "../../style/hangman.module.scss";
 import { useLayoutEffect, useState } from "react";
-import { images } from "../../data/hangman";
+import { images } from "../../data/hangman.js";
 
 export default function HangmanDrawing({ lives }) {
   const [src, setSrc] = useState("");

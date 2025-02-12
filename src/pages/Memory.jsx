@@ -10,7 +10,7 @@ import Card from "../components/memory/Card";
 import PlayAgain from "../components/PlayAgain";
 
 import style from '../style/memory.module.scss';
-import { NUMBER_OF_CARDS, CARDS } from "../data/memory";
+import { NUMBER_OF_CARDS, CARDS } from "../data/memory.js";
 
 export default function Memory()
 {

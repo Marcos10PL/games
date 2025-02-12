@@ -10,7 +10,7 @@ import Status from "../components/Status";
 import Icon from "../components/rock-paper-scissors/Icon";
 
 import style from '../style/paper-rock-scissors.module.scss';
-import { ICONS, LIMITS, PAPER, ROCK, SCISSORS } from "../data/rock-paper-scissors";
+import { ICONS, LIMITS, PAPER, ROCK, SCISSORS } from "../data/rock-paper-scissors.js";
 
 export default function RockPaperScissors()
 {

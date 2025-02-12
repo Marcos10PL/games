@@ -12,7 +12,7 @@ import PlayAgain from "../components/PlayAgain";
 import Phrase from "../components/hangman/Phrase";
 
 import style from '../style/hangman.module.scss';
-import { CATEGORIES, LETTERS, proverbs, sports, movies, MAX_LIVES } from "../data/hangman";
+import { CATEGORIES, LETTERS, proverbs, sports, movies, MAX_LIVES } from "../data/hangman.js";
 
 export default function Hangman()
 {

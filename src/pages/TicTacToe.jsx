@@ -9,7 +9,7 @@ import StartButton from "../components/StartButton";
 import Info from "../components/Info";
 import Status from "../components/Status";
 
-import {PLAYERS, fieldValues, winnerLines, GAME_MODES, MAX_ROUNDS} from '../data/tictactoe';
+import {PLAYERS, fieldValues, winnerLines, GAME_MODES, MAX_ROUNDS} from '../data/tictactoe.js';
 import style from '../style/tictactoe.module.scss';
 
 export default function TicTacToe()
@@ -83,22 +83,23 @@ export default function TicTacToe()
     let isInArray = false;
     let pcMove = findPcMove(PLAYERS.O);
 
-    if(!pcMove)
+    if(pcMove === null)
       pcMove = findPcMove(PLAYERS.X)
 
-    if(!pcMove)
+    if(pcMove === null)
     {
       do
       {
         isInArray = false;
         pcMove = Math.floor(Math.random()*MAX_ROUNDS);
+        console.log(pcMove);
         if(fieldsClicked[pcMove])
           isInArray = true;
       }
       while(isInArray);
     }
     
-    if(pcMove)
+    if(pcMove !== null)
     {
       setTimeout(() => {
         nextMove(pcMove, PLAYERS.O);
